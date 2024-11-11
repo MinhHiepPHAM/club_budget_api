@@ -7,6 +7,8 @@ An user-friendly platform allows you to effortlessly track, manage, and share bu
 
 [See the demo video](https://www.youtube.com/watch?v=4wPtLNOpups)
 
+<img src="photo/budget_screenshot.png" />
+
 # Deploy the applicaton in AWS
 
 ## Launch new EC2 Instance
@@ -16,17 +18,11 @@ An user-friendly platform allows you to effortlessly track, manage, and share bu
 ```bash
 sudo apt update &&
 sudo apt install python3-virtualenv &&
-
 sudo apt install python3-pip &&
-
 mkdir club_budget &&
-
 cd club_budget &&
-
 virtualenv venv &&
-
 git clone https://github.com/MinhHiepPHAM/backend_projects.git &&
-
 cp -r backend_projects/club_budget/backend/project . &&
 ```
 
@@ -37,21 +33,15 @@ cp -r backend_projects/club_budget/backend/project . &&
 ```bash
 django==4.2.9
 django-cors-headers==4.3.1
-
 djangorestframework==3.14.0
-
 djangorestframework-simplejwt==5.3.1
-
 python-decouple==3.8
-
 requests==2.31.0
-
 psycopg2-binary
 ```
 ### Install nginx as an API gateway:
 ```bash
 sudo apt install nginx
-
 sudo systemctl start nginx
 ```
 Useful Link:
@@ -84,41 +74,23 @@ Run *npm run build* then upload files and assets folder in **dist** repo to S3 (
 Update the S3 policy to allow only cloudfront that can be access to it
 ```json
 {
-
    "Version": "2012-10-17",
-
     "Statement": [ 
-
         {
-
             "Sid": "AllowCloudFrontServicePrincipalReadOnly",
-
             "Effect": "Allow",
-
             "Principal": {
-
                 "Service": "cloudfront.amazonaws.com"
-
             },
-
             "Action": "s3:GetObject",
-
             "Resource": "arn:aws:s3:::<bucket name>/*",
-
             "Condition": {
-
                 "StringEquals": {
-
                     "AWS:SourceArn": "arn:aws:cloudfront::xxxx"
-
                 }
-
             }
-
         }
-
      ]
-
 }
 ```
 
